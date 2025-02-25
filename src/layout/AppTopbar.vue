@@ -12,7 +12,7 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
                 <i class="pi pi-bars"></i>
             </button>
             <router-link to="/" class="layout-topbar-logo">
-                <svg viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- <svg viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         fill-rule="evenodd"
                         clip-rule="evenodd"
@@ -28,9 +28,10 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
                             fill="var(--primary-color)"
                         />
                     </g>
-                </svg>
-
-                <span>SAKAI</span>
+                </svg> -->
+                <img v-if="!isDarkTheme" src="/demo/images/celcomdigi.png" alt="Mover Logo" class="h-10" />
+                <img v-else src="/demo/images/celcomdigi2.png" alt="Mover Logo" class="h-10" />
+                <!-- <span>celcomdigi</span> -->
             </router-link>
         </div>
 
@@ -68,7 +69,7 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
                         <i class="pi pi-inbox"></i>
                         <span>Messages</span>
                     </button>
-                    <button type="button" class="layout-topbar-action">
+                    <button type="button" class="layout-topbar-action" @click="$router.push('/auth/login')">
                         <i class="pi pi-user"></i>
                         <span>Profile</span>
                     </button>

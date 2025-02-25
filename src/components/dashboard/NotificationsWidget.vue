@@ -1,78 +1,119 @@
+<template>
+    <div class="widget p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Notifications</h3>
+
+        <!-- Scrollable Notifications Container -->
+        <div class="overflow-y-auto max-h-64">
+            <ul class="space-y-3">
+                <li v-for="(notification, index) in notifications" :key="index" 
+                    class="flex items-start justify-between p-2 border-b dark:border-gray-700">
+                    
+                    <div class="flex items-center space-x-2 w-full">
+                        <!-- Notification Icon -->
+                        <div :class="[
+                            'w-2.5 h-2.5 rounded-full',
+                            notification.type === 'info' ? 'bg-blue-500' : 
+                            notification.type === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
+                        ]"></div>
+
+                        <!-- Notification Content -->
+                        <div class="w-full">
+                            <p :class="[
+                                'text-sm font-semibold text-gray-900 dark:text-gray-100',
+                                notification.read ? 'text-opacity-50' : ''
+                            ]">
+                                {{ notification.title }}
+                            </p>
+                            <p :class="[
+                                'text-xs text-gray-600 dark:text-gray-400',
+                                notification.read ? 'text-opacity-50' : ''
+                            ]">
+                                {{ notification.message }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Actions: Mark as Read & Delete -->
+                    <div class="flex space-x-1">
+                        <button v-if="!notification.read" @click="markAsRead(index)"
+                            class="text-xs px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition">
+                            ✓
+                        </button>
+                        <button @click="removeNotification(index)"
+                            class="text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                            ✕
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Clear All Button -->
+        <div v-if="notifications.length" class="text-center mt-3">
+            <button @click="clearAllNotifications"
+                class="text-xs px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+                Clear All
+            </button>
+        </div>
+
+        <!-- No Notifications Message -->
+        <p v-else class="text-center text-gray-500 dark:text-gray-400 text-sm">No new notifications</p>
+    </div>
+</template>
+
 <script setup>
 import { ref } from 'vue';
 
-const menu = ref(null);
-
-const items = ref([
-    { label: 'Add New', icon: 'pi pi-fw pi-plus' },
-    { label: 'Remove', icon: 'pi pi-fw pi-trash' }
+// Sample Notifications List
+const notifications = ref([
+    { type: 'info', title: 'Stock Alert', message: 'New stock has been added to the warehouse.', read: false },
+    { type: 'warning', title: 'Low Stock', message: 'The stock for SKU 1234 is running low.', read: false },
+    { type: 'error', title: 'Critical Error', message: 'There was an issue processing the last shipment.', read: false },
+    { type: 'info', title: 'Inbound Shipment', message: 'A new shipment has arrived at Dock B.', read: false },
+    { type: 'warning', title: 'Delayed Order', message: 'Order #5678 is delayed due to warehouse constraints.', read: false },
+    { type: 'error', title: 'System Downtime', message: 'Warehouse management system maintenance scheduled at midnight.', read: false }
 ]);
+
+// Mark a notification as read
+const markAsRead = (index) => {
+    notifications.value[index].read = true;
+};
+
+// Remove a single notification
+const removeNotification = (index) => {
+    notifications.value.splice(index, 1);
+};
+
+// Clear all notifications
+const clearAllNotifications = () => {
+    notifications.value = [];
+};
 </script>
 
-<template>
-    <div class="card">
-        <div class="flex items-center justify-between mb-6">
-            <div class="font-semibold text-xl">Notifications</div>
-            <div>
-                <Button icon="pi pi-ellipsis-v" class="p-button-text p-button-plain p-button-rounded" @click="$refs.menu.toggle($event)"></Button>
-                <Menu ref="menu" popup :model="items" class="!min-w-40"></Menu>
-            </div>
-        </div>
+<style scoped>
+/* Dark mode styles */
+.dark .bg-white {
+    background-color: #1f2937;
+}
+.dark .text-gray-900 {
+    color: #e5e7eb;
+}
+.dark .text-gray-600 {
+    color: #d1d5db;
+}
+.dark .bg-blue-500 {
+    background-color: #3b82f6;
+}
+.dark .bg-yellow-500 {
+    background-color: #f59e0b;
+}
+.dark .bg-red-500 {
+    background-color: #ef4444;
+}
 
-        <span class="block text-muted-color font-medium mb-4">TODAY</span>
-        <ul class="p-0 mx-0 mt-0 mb-6 list-none">
-            <li class="flex items-center py-2 border-b border-surface">
-                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-400/10 rounded-full mr-4 shrink-0">
-                    <i class="pi pi-dollar !text-xl text-blue-500"></i>
-                </div>
-                <span class="text-surface-900 dark:text-surface-0 leading-normal"
-                    >Richard Jones
-                    <span class="text-surface-700 dark:text-surface-100">has purchased a blue t-shirt for <span class="text-primary font-bold">$79.00</span></span>
-                </span>
-            </li>
-            <li class="flex items-center py-2">
-                <div class="w-12 h-12 flex items-center justify-center bg-orange-100 dark:bg-orange-400/10 rounded-full mr-4 shrink-0">
-                    <i class="pi pi-download !text-xl text-orange-500"></i>
-                </div>
-                <span class="text-surface-700 dark:text-surface-100 leading-normal">Your request for withdrawal of <span class="text-primary font-bold">$2500.00</span> has been initiated.</span>
-            </li>
-        </ul>
-
-        <span class="block text-muted-color font-medium mb-4">YESTERDAY</span>
-        <ul class="p-0 m-0 list-none mb-6">
-            <li class="flex items-center py-2 border-b border-surface">
-                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-400/10 rounded-full mr-4 shrink-0">
-                    <i class="pi pi-dollar !text-xl text-blue-500"></i>
-                </div>
-                <span class="text-surface-900 dark:text-surface-0 leading-normal"
-                    >Keyser Wick
-                    <span class="text-surface-700 dark:text-surface-100">has purchased a black jacket for <span class="text-primary font-bold">$59.00</span></span>
-                </span>
-            </li>
-            <li class="flex items-center py-2 border-b border-surface">
-                <div class="w-12 h-12 flex items-center justify-center bg-pink-100 dark:bg-pink-400/10 rounded-full mr-4 shrink-0">
-                    <i class="pi pi-question !text-xl text-pink-500"></i>
-                </div>
-                <span class="text-surface-900 dark:text-surface-0 leading-normal"
-                    >Jane Davis
-                    <span class="text-surface-700 dark:text-surface-100">has posted a new questions about your product.</span>
-                </span>
-            </li>
-        </ul>
-        <span class="block text-muted-color font-medium mb-4">LAST WEEK</span>
-        <ul class="p-0 m-0 list-none">
-            <li class="flex items-center py-2 border-b border-surface">
-                <div class="w-12 h-12 flex items-center justify-center bg-green-100 dark:bg-green-400/10 rounded-full mr-4 shrink-0">
-                    <i class="pi pi-arrow-up !text-xl text-green-500"></i>
-                </div>
-                <span class="text-surface-900 dark:text-surface-0 leading-normal">Your revenue has increased by <span class="text-primary font-bold">%25</span>.</span>
-            </li>
-            <li class="flex items-center py-2 border-b border-surface">
-                <div class="w-12 h-12 flex items-center justify-center bg-purple-100 dark:bg-purple-400/10 rounded-full mr-4 shrink-0">
-                    <i class="pi pi-heart !text-xl text-purple-500"></i>
-                </div>
-                <span class="text-surface-900 dark:text-surface-0 leading-normal"><span class="text-primary font-bold">12</span> users have added your products to their wishlist.</span>
-            </li>
-        </ul>
-    </div>
-</template>
+/* Scrollable container */
+.overflow-y-auto {
+    max-height: 165px; /* Allows scrolling for many notifications */
+    overflow-y: auto;
+}
+</style>

@@ -175,6 +175,9 @@ function updateColors(type, color) {
     applyTheme(type, color);
 }
 
+applyTheme('primary', { name: 'blue' });
+
+
 function applyTheme(type, color) {
     if (type === 'primary') {
         updatePreset(getPresetExt());
@@ -185,6 +188,8 @@ function applyTheme(type, color) {
 
 function onPresetChange() {
     layoutConfig.preset = preset.value;
+    layoutConfig.primary = 'blue'; // Ensure blue is applied on startup
+
     const presetValue = presets[preset.value];
     const surfacePalette = surfaces.value.find((s) => s.name === layoutConfig.surface)?.palette;
 
