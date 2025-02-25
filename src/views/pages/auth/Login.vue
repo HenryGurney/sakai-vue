@@ -17,8 +17,8 @@ const checked = ref(false);
             <div style="border-radius: 56px; padding: 0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)">
                 <div class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20" style="border-radius: 53px">
                     <div class="text-center mb-8">
-                        <img v-if="!isDarkTheme" src="/home/movertraining2/wms-mover/sakai-vue/public/demo/images/mover1.png" alt="Mover Logo" class="w-60 h-auto mx-auto mb-6" />
-                        <img v-else src="/home/movertraining2/wms-mover/sakai-vue/public/demo/images/mover2.png" alt="Mover Logo" class="w-60 h-auto mx-auto mb-6" />
+                        <img v-if="!isDarkTheme" src="/demo/images/mover1.png" alt="Mover Logo" class="w-60 h-auto mx-auto mb-6" />
+                        <img v-else src="/demo/images/mover2.png" alt="Mover Logo" class="w-60 h-auto mx-auto mb-6" />
                         <span class="text-muted-color font-medium">Sign in to continue</span>
                     </div>
 
