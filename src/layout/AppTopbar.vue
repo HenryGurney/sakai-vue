@@ -13,8 +13,8 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
             </button>
             <router-link to="/" class="layout-topbar-logo">
 
-                <img v-if="!isDarkTheme" src="/home/movertraining2/wms-mover/sakai-vue/public/demo/images/mover1.png" alt="Mover Logo" class="h-10" />
-                <img v-else src="/home/movertraining2/wms-mover/sakai-vue/public/demo/images/mover2.png" alt="Mover Logo" class="h-10" />
+                <img v-if="!isDarkTheme" src="/demo/images/mover1.png" alt="Mover Logo" class="h-10" />
+                <img v-else src="/demo/images/mover2.png" alt="Mover Logo" class="h-10" />
             </router-link>
         </div>
 
