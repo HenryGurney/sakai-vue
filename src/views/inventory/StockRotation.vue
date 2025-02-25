@@ -84,14 +84,6 @@ const expiringStock = computed(() => {
 const fifoStock = computed(() => movements.value.filter(m => m.priority === 'FIFO').length);
 const lifoStock = computed(() => movements.value.filter(m => m.priority === 'LIFO').length);
 
-// FIFO vs LIFO Stock Movement Chart
-const chartOptions = ref({
-    chart: { type: 'bar', background: 'transparent' },
-    xaxis: { categories: ['FIFO', 'LIFO'] },
-    colors: ['#008ffb', '#ff4560']
-});
-const chartSeries = ref([{ name: 'Movements', data: [fifoStock.value, lifoStock.value] }]);
-
 // Get priority class for styling
 const getPriorityClass = (priority) => {
     switch (priority) {
