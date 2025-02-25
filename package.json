@@ -9,7 +9,9 @@
     },
     "dependencies": {
         "@primevue/themes": "^4.2.4",
+        "@vueuse/core": "^12.7.0",
         "chart.js": "3.3.2",
+        "panzoom": "^9.4.3",
         "primeicons": "^7.0.0",
         "primevue": "^4.2.4",
         "vue": "^3.4.34",

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="card">
         <div class="font-semibold text-2xl mb-4">Documentation</div>
         <div class="font-semibold text-xl mb-4">Get Started</div>
@@ -146,4 +146,6 @@ import AppLayout from './AppLayout.vue';
         }
     }
 }
-</style>
+</style> -->
+
+<template></template>
