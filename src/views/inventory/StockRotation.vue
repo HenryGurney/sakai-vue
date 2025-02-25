@@ -34,12 +34,6 @@
             </ul>
         </div>
 
-        <!-- 📊 FIFO/LIFO Stock Movement Chart -->
-        <div class="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-md shadow">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">FIFO vs LIFO Stock Flow</h2>
-            <apexchart type="bar" height="300" :options="chartOptions" :series="chartSeries"></apexchart>
-        </div>
-
         <!-- 🚛 Stock Movement Table -->
         <table class="table-auto w-full mt-6">
             <thead>
