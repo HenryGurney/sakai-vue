@@ -66,7 +66,6 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import VueApexCharts from 'vue3-apexcharts';
 
 // Dummy stock movements
 const movements = ref([
