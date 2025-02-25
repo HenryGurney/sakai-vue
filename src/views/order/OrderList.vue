@@ -75,14 +75,13 @@
 <script setup>
 import { ref } from 'vue';
 
-// Sample Orders for Celcom Digi Warehouse Operations
 const orders = ref([
-  { id: 101, type: "Inbound", priority: "High", bin: "A1", inventory: "5G Modem", boxQuantity: 10, skuQuantity: 100, expiryDate: "N/A", location: "Storage A", notes: "Handle with care", lastUpdated: "2024-02-01", status: "Pending" },
-  { id: 102, type: "Outbound", priority: "Medium", bin: "B4", inventory: "Fiber Router", boxQuantity: 5, skuQuantity: 50, expiryDate: "N/A", location: "Storage A", notes: "Urgent order", lastUpdated: "2024-01-28", status: "Processing" },
-  { id: 103, type: "Return", priority: "Low", bin: "C2", inventory: "SIM Cards", boxQuantity: 3, skuQuantity: 30, expiryDate: "2025-03-20", location: "Storage C", notes: "Defective units", lastUpdated: "2024-01-25", status: "Shipped" },
-  { id: 104, type: "Inbound", priority: "High", bin: "A5", inventory: "Wireless Routers", boxQuantity: 12, skuQuantity: 120, expiryDate: "N/A", location: "Storage B", notes: "Check firmware", lastUpdated: "2024-02-02", status: "Pending" },
-  { id: 105, type: "Outbound", priority: "High", bin: "B7", inventory: "Fiber Modem", boxQuantity: 6, skuQuantity: 60, expiryDate: "N/A", location: "Storage B", notes: "Express delivery", lastUpdated: "2024-02-01", status: "Processing" },
-  { id: 106, type: "Return", priority: "Medium", bin: "C1", inventory: "Network Cables", boxQuantity: 4, skuQuantity: 40, expiryDate: "2026-06-30", location: "Storage C", notes: "Damaged cables", lastUpdated: "2024-01-30", status: "Shipped" }
+  { id: 101, type: "Inbound", priority: "High", bin: "A1", inventory: "Pallet A", boxQuantity: 10, skuQuantity: 100, expiryDate: "N/A", location: "Storage A", notes: "Handle with care", lastUpdated: "2024-02-01", status: "Pending" },
+  { id: 102, type: "Outbound", priority: "Medium", bin: "B4", inventory: "Package A", boxQuantity: 5, skuQuantity: 50, expiryDate: "N/A", location: "Storage A", notes: "Urgent order", lastUpdated: "2024-01-28", status: "Processing" },
+  { id: 103, type: "Return", priority: "Low", bin: "C2", inventory: "Package C", boxQuantity: 3, skuQuantity: 30, expiryDate: "2025-03-20", location: "Storage C", notes: "Defective units", lastUpdated: "2024-01-25", status: "Shipped" },
+  { id: 104, type: "Inbound", priority: "High", bin: "A5", inventory: "Pallet B", boxQuantity: 12, skuQuantity: 120, expiryDate: "N/A", location: "Storage B", notes: "Check firmware", lastUpdated: "2024-02-02", status: "Pending" },
+  { id: 105, type: "Outbound", priority: "High", bin: "B7", inventory: "Pallet C", boxQuantity: 6, skuQuantity: 60, expiryDate: "N/A", location: "Storage B", notes: "Express delivery", lastUpdated: "2024-02-01", status: "Processing" },
+  { id: 106, type: "Return", priority: "Medium", bin: "C1", inventory: "Package D", boxQuantity: 4, skuQuantity: 40, expiryDate: "2026-06-30", location: "Storage C", notes: "Damaged", lastUpdated: "2024-01-30", status: "Shipped" }
 ]);
 
 // Update Order Status

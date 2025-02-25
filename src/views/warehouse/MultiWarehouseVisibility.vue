@@ -77,10 +77,10 @@
   
   // Sample Inventory Data
   const inventory = ref([
-    { id: 101, warehouse: "Warehouse A", name: "5G Modem", stock: 120, priority: "High", status: "Available" },
-    { id: 102, warehouse: "Warehouse B", name: "Fiber Router", stock: 60, priority: "Medium", status: "Low Stock" },
-    { id: 103, warehouse: "Warehouse C", name: "Network Switch", stock: 30, priority: "High", status: "Critical" },
-    { id: 104, warehouse: "Warehouse A", name: "SIM Cards", stock: 200, priority: "Low", status: "Available" }
+    { id: 101, warehouse: "Warehouse A", name: "Pallet A", stock: 120, priority: "High", status: "Available" },
+    { id: 102, warehouse: "Warehouse B", name: "Package C", stock: 60, priority: "Medium", status: "Low Stock" },
+    { id: 103, warehouse: "Warehouse C", name: "Pallet D", stock: 30, priority: "High", status: "Critical" },
+    { id: 104, warehouse: "Warehouse A", name: "Package B", stock: 200, priority: "Low", status: "Available" }
   ]);
   
   const searchQuery = ref("");

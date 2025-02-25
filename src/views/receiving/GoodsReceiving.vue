@@ -101,10 +101,10 @@ const locations = ["Warehouse A", "Warehouse B", "Section C", "Storage Unit D"];
 
 // Sample Items to Receive
 const itemsToReceive = ref([
-  { id: "G001", description: "5G Modem", quantity: 20, supplier: "Huawei Technologies", expectedLocation: "Warehouse A", status: "Pending" },
-  { id: "G002", description: "Fiber Router", quantity: 10, supplier: "Nokia Malaysia", expectedLocation: "Warehouse B", status: "Pending" },
-  { id: "G003", description: "Network Switch", quantity: 15, supplier: "Ericsson Suppliers", expectedLocation: "Section C", status: "Pending" },
-  { id: "G004", description: "SIM Cards", quantity: 50, supplier: "ZTE Global", expectedLocation: "Storage Unit D", status: "Pending" }
+  { id: "G001", description: "Pallet A", quantity: 20, supplier: "Supplier A", expectedLocation: "Warehouse A", status: "Pending" },
+  { id: "G002", description: "Package D", quantity: 10, supplier: "Supplier B", expectedLocation: "Warehouse B", status: "Pending" },
+  { id: "G003", description: "Package B", quantity: 15, supplier: "Supplier C", expectedLocation: "Section C", status: "Pending" },
+  { id: "G004", description: "Pallet C", quantity: 50, supplier: "Supplier D", expectedLocation: "Storage Unit D", status: "Pending" }
 ]);
 
 const scanInput = ref('');

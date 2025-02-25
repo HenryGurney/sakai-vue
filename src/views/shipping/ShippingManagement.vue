@@ -85,7 +85,7 @@ const packedOrders = ref([
 ]);
 
 // Shipping Carriers
-const shippingCarriers = ref(["DHL", "FedEx", "UPS", "PosLaju", "J&T Express"]);
+const shippingCarriers = ref(["Courier A", "Courier B", "Courier C", "Courier D", "Courier E"]);
 
 const selectedOrder = ref(null);
 const selectedCarrier = ref('');
