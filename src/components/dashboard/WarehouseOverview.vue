@@ -13,9 +13,9 @@ const getBatteryColor = (battery) => {
 
 // Define warehouse zones
 const warehouseZones = [
-  { name: "Inbound", x: 50, y: 50, width: 80, height: 40, color: "#888", icon: "pi pi-download" },
-  { name: "Outbound", x: 650, y: 350, width: 80, height: 40, color: "#888", icon: "pi pi-upload" },
-  { name: "Charging", x: 50, y: 350, width: 80, height: 40, color: "#888", icon: "pi pi-bolt" },
+  { name: "Inbound", x: 50, y: 50, width: 80, height: 60, color: "#888", icon: "pi pi-download" },
+  { name: "Outbound", x: 650, y: 350, width: 150, height: 50, color: "#888", icon: "pi pi-upload" },
+  { name: "Charging Station", x: 50, y: 350, width: 120, height: 50, color: "#888", icon: "pi pi-bolt" },
 ];
 
 // Define racking zones
@@ -260,7 +260,8 @@ onUnmounted(() => {
           <rect :x="zone.x" :y="zone.y" :width="zone.width" :height="zone.height" :fill="zone.color" stroke="white" stroke-width="1" />
           <foreignObject :x="zone.x" :y="zone.y" :width="zone.width" :height="zone.height">
             <div class="flex items-center justify-center w-full h-full">
-              <i :class="zone.icon" class="text-white text-2xl"></i>
+              <i :class="zone.icon" class="text-white mr-1" :style="{ fontSize: '10px' }"></i>
+              <span class="text-white text-xs">{{ zone.name }}</span>
             </div>
           </foreignObject>
         </g>
@@ -275,17 +276,17 @@ onUnmounted(() => {
         
         <g v-for="amr in amrs" :key="amr.id">
           <image 
-            :x="amr.x - 30" 
-            :y="amr.y - 30" 
-            width="60" 
-            height="60" 
+            :x="amr.x - 75" 
+            :y="amr.y - 75" 
+            width="150" 
+            height="150" 
             :xlink:href="`/robot_${amr.id}.png`" 
             :class="{ 'blinking': amr.status === 'Moving' }" />
           
           <circle 
             :cx="amr.x" 
             :cy="amr.y" 
-            r="1" 
+            r="3" 
             fill="green" 
             opacity="0.8"
           />
